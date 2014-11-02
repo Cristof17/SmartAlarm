@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<EditTextPreference 
+    android:key="ip"
+    android:title="Set the Ip"
+    android:summary="In order to connect to the Raspberry you need to know it's IP Address"/>    
+
+</PreferenceScreen>

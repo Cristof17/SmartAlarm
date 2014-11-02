@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+<ImageButton
+    android:id="@+id/remove_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentRight="true"
+    android:layout_centerVertical="true"
+    android:background="@drawable/sign_in_button"
+    android:padding="10dp"
+    android:src="@drawable/ic_clear_normal"
+    android:layout_marginRight="20dp"
+    android:layout_marginLeft="20dp"
+    android:focusableInTouchMode="false"
+    android:focusable="false">
+    
+</ImageButton>
+    
+    
+<TextView
+    android:id="@+id/h_text_field"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+	android:layout_marginLeft="10dp"
+	android:textSize="50dp"
+	android:layout_alignParentLeft="true"
+	android:layout_marginTop="25dp"
+	android:layout_marginBottom="25dp"
+	android:focusable="false"
+	android:layout_centerVertical="true"
+	android:focusableInTouchMode="false">
+</TextView>
+
+
+<TextView 
+    android:id="@+id/semicolon"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:text=":"
+    android:textSize="50dp"
+    android:layout_marginTop="25dp"
+	android:layout_marginBottom="25dp"
+    android:layout_toRightOf="@id/h_text_field"
+    android:focusable="false"
+    android:layout_centerVertical="true"
+    android:focusableInTouchMode="false">
+    
+</TextView>
+
+
+<TextView 
+    android:id="@+id/m_text_field"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:textSize="50dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="25dp"
+	android:layout_marginBottom="25dp"
+    android:layout_toRightOf="@id/semicolon"
+    android:focusable="false"
+    android:layout_centerVertical="true"
+    android:focusableInTouchMode="false"/>
+
+<TextView 
+    android:id="@+id/y_text_field"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:layout_centerVertical="true"
+    android:textSize="20dp"
+    android:layout_toLeftOf="@id/remove_button"
+    android:layout_marginRight="20dp"
+    android:focusable="false"
+    android:focusableInTouchMode="false"/>
+
+<TextView 
+    android:id="@+id/mo_text_field"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:textSize="20dp"
+    android:layout_centerVertical="true"
+    android:layout_toLeftOf="@id/y_text_field"
+    android:focusable="false"
+    android:focusableInTouchMode="false"/>
+
+<TextView 
+    android:id="@+id/d_text_field"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:textSize="20dp"
+    android:layout_toLeftOf="@id/mo_text_field"
+    android:layout_centerVertical="true"
+    android:focusable="false"
+    android:focusableInTouchMode="false"/>
+</RelativeLayout>
