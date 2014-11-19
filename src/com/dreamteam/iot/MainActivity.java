@@ -102,32 +102,12 @@ public class MainActivity extends Activity implements OnTimeSetListener, OnDateS
 		intent_list = new ArrayList<PendingIntent>();
 		
 		this.delay_offsets = new ArrayList<Integer>();
-		
-//		Intent intent = new Intent(MainActivity.this , AlarmManagerHelper.class);
-//		
-//		PendingIntent register = PendingIntent.getBroadcast(getBaseContext(), 0, intent,0);
-//		intent_list.add(register);
-//		
-//		calendar.set(Calendar.YEAR,2014);
-//		calendar.set(Calendar.MONTH, 10);
-//		calendar.set(Calendar.DAY_OF_MONTH, 2);
-//		calendar.set(Calendar.HOUR_OF_DAY,13);
-//		calendar.set(Calendar.MINUTE,27);
-//		calendar.set(Calendar.SECOND, 0);
-//		
-//		
-//		alarm_manager.set(AlarmManager.RTC,calendar.getTimeInMillis(), register);
-//		
-//		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
-//		
-//	     Log.d(TAG ,"Time format is :" +formatter.format(calendar.getTime()));
-//		
-		
+				
 		/*
 		 * Retrieve the IP from the preferences
 		 */
 		IP = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("ip", null);
-//		Toast.makeText(getApplicationContext(), "Ip of the Raspberry is "+IP, Toast.LENGTH_LONG).show();
+		Toast.makeText(getApplicationContext(), "Ip of the Raspberry is "+IP, Toast.LENGTH_LONG).show();
 		
 		
 		
@@ -236,15 +216,10 @@ public class MainActivity extends Activity implements OnTimeSetListener, OnDateS
 			 */
 		case com.dreamteam.iot.R.id.action_sync:
 			Toast.makeText(getApplicationContext(), "Syncing with the Raspberry Pi", Toast.LENGTH_SHORT).show();
-			
-			syncDataWithRaspberry(); 
+			unRegisterAlarms(alarms);
+			registerAlarms(alarms);
 			return true;
 			
-		case com.dreamteam.iot.R.id.action_run:
-			RunAsyncTask task = new RunAsyncTask();
-			task.execute();
-			return true;
-		
 		case com.dreamteam.iot.R.id.settings:
 			Intent settings_intent = new Intent(getApplicationContext(),SettingsActivity.class);
 			startActivity(settings_intent);
@@ -257,7 +232,8 @@ public class MainActivity extends Activity implements OnTimeSetListener, OnDateS
 
 	@Override
 	protected void onResume() {
-		syncDataWithRaspberry();
+		
+//		syncDataWithRaspberry();
 		IP = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("ip", null);
 		super.onResume();
 	}
@@ -517,7 +493,7 @@ public class MainActivity extends Activity implements OnTimeSetListener, OnDateS
 			
 			SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
 			
-		     Log.d(TAG ,"Time format is :" +formatter.format(calendar.getTime()));
+		    Log.d(TAG ,"Time format is :" +formatter.format(calendar.getTime()));
 
 			
 		}
@@ -581,50 +557,6 @@ public class MainActivity extends Activity implements OnTimeSetListener, OnDateS
 			return answer;
 		}
 	}
-
-	
-	
-
-private class RunAsyncTask extends AsyncTask<Void, String, String>{
-
-		
-		private  final int STOPPED = -1;
-		HttpClient client ;
-		HttpGet post; 
-		HttpResponse response;
-		HttpEntity entity;
-		String answer;
-		
-	
-
-		protected String doInBackground(Void... params) {
-			
-			
-			HttpClient client = new DefaultHttpClient();
-			post = new HttpGet("http://"+IP+":5000/on/");
-			HttpResponse response = null ;
-			
-				try{
-					
-					response = client.execute(post);
-					
-					HttpEntity httpEntity = response.getEntity();
-		            answer  = EntityUtils.toString(httpEntity);
-					
-				
-					Log.d(TAG, "Response from Run is  "+ answer );
-				} catch (ClientProtocolException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				
-			
-			return answer;
-		}
-	}
-
-	
 
 private class DeleteAllAsyncTask extends AsyncTask<Void, String, String>{
 
@@ -801,19 +733,19 @@ private class DeleteAllAsyncTask extends AsyncTask<Void, String, String>{
 
 	
 
-	private void syncDataWithRaspberry(){
-		
-		new DeleteAllAsyncTask().execute();
-		
-		for(alarm_item item : alarms){
-			/*
-			 * send every alarm to the raspberry
-			 */
-			PostAsyncTask task = new PostAsyncTask(item);
-			task.execute();
-			
-			
-		}
-	}
+//	private void syncDataWithRaspberry(){
+//		
+//		new DeleteAllAsyncTask().execute();
+//		
+//		for(alarm_item item : alarms){
+//			/*
+//			 * send every alarm to the raspberry
+//			 */
+//			PostAsyncTask task = new PostAsyncTask(item);
+//			task.execute();
+//			
+//			
+//		}
+//	}
 	
 }

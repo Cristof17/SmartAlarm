@@ -28,6 +28,7 @@ public class AlarmManagerHelper extends BroadcastReceiver {
 
 	private String IP ;
 	private volatile boolean is_pressed; 
+	private int number_of_thread_calls = 0;
 	
 	
 	@Override
@@ -45,8 +46,11 @@ public class AlarmManagerHelper extends BroadcastReceiver {
 		
 		
 		
-		
-		while(!is_pressed ){
+		/*
+		 * if the raspberry doesn't reply after 20 seconds give up 
+		 * creating threads
+		 */
+		while(!is_pressed && number_of_thread_calls < 20){
 			
 			new SnoozeAsyncTask().execute();
 			Log.d("ALARM_MANAGER_HELPER", "Running while() loop "); 
@@ -60,8 +64,13 @@ public class AlarmManagerHelper extends BroadcastReceiver {
 				e.printStackTrace();
 			}
 		}
+		
+		
 		 
 	}
+	
+	
+	
 	
 	
 	
@@ -86,6 +95,7 @@ public class AlarmManagerHelper extends BroadcastReceiver {
 			
 				try{
 					
+
 					response = client.execute(post);
 					
 					HttpEntity httpEntity = response.getEntity();
@@ -131,7 +141,7 @@ public class AlarmManagerHelper extends BroadcastReceiver {
 		
 			try {
 				
-				
+				number_of_thread_calls ++;
 				
 				response = client.execute(get);
 				

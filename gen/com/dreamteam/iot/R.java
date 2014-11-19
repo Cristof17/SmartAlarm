@@ -9,8 +9,10 @@ package com.dreamteam.iot;
 
 public final class R {
     public static final class anim {
-        public static final int slide_in=0x7f040000;
-        public static final int slide_out=0x7f040001;
+        public static final int child_slide_in=0x7f040000;
+        public static final int child_slide_out=0x7f040001;
+        public static final int slide_in=0x7f040002;
+        public static final int slide_out=0x7f040003;
     }
     public static final class attr {
     }
@@ -37,7 +39,6 @@ public final class R {
     }
     public static final class id {
         public static final int action_add=0x7f0a000e;
-        public static final int action_run=0x7f0a0010;
         public static final int action_sync=0x7f0a000f;
         public static final int alarms_list=0x7f0a0000;
         public static final int cancel_button=0x7f0a0006;
@@ -52,7 +53,7 @@ public final class R {
         public static final int remove_button=0x7f0a0007;
         public static final int semicolon=0x7f0a0009;
         public static final int semicolon_EditText=0x7f0a0002;
-        public static final int settings=0x7f0a0011;
+        public static final int settings=0x7f0a0010;
         public static final int y_text_field=0x7f0a000b;
     }
     public static final class layout {

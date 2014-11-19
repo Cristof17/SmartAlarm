@@ -129,7 +129,7 @@ public class AlarmItemActivity extends Activity implements OnDateSetListener ,Se
 				Intent returnIntent = new Intent();
 				setResult(RESULT_CANCELED,returnIntent);
 				finish();
-				overridePendingTransition( R.anim.slide_in, R.anim.slide_out );
+				overridePendingTransition( R.anim.child_slide_in, R.anim.child_slide_out );
 				
 			}
 		});
@@ -147,8 +147,19 @@ public class AlarmItemActivity extends Activity implements OnDateSetListener ,Se
 		date_button.setText(day +" / "+month+ " / "+year);
 		
 	}
+	
+	
 
 	
+	@Override
+	protected void onPause() {
+		overridePendingTransition(R.anim.child_slide_in, R.anim.child_slide_out);
+		super.onPause();
+	}
+
+
+
+
 private class DeleteAsyncTask extends AsyncTask<Void, String, String>{
 
 		
